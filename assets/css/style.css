@@ -1,0 +1,46 @@
+
+
+body {
+	margin: 0px;
+	font-style: verdana, "times new roman";
+	background-image: url("../images/Background1WithBall.jpg");
+	background-size: 1700px 900px;
+}
+
+.container {
+	background-color: yellow;
+	margin: 40px 100px 60px 150px;
+}
+
+h1 {
+	font-size: 60px;
+	font-weight: bold;
+	color: green;
+	text-align: center;
+}
+
+.start {
+	font-size: 30px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: green;
+	margin:10% 20% 10% 20%;
+}
+
+h2 {
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+}
+
+p {
+	font-size: 30px;
+	text-align: center;
+}
+
+.a {
+	border-style: solid;
+	border-width: 0px;
+	border-color: green;
+	margin:2% 20% 2% 20%;
+}
