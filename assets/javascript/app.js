@@ -3,10 +3,12 @@ var qAndA = [
 ["Whose tennis serve was the fastest ever recorded?", "John Isner", "Andy Roddick", "Sam Groth", "Bill Tilden", "Sam Groth, from the UK, hit the fastest serve at 163.3 mph in 2012", "<img src=assets/images/samGroth.jpg />"],
 ["Which tennis player is known for yelling 'you cannot be serious' at an umpire?", "John McEnroe", "Ilie Nastase", "Jimmie Connors","Nick Kyrgios", "John McEnroe, tennis 'bad boy' is know for saying this and wrote a book by the same title", "<img src=assets/images/McEnroe.jpg />"],
 ["How much does a tennis ball weight?", "1 to 1.0625 ounces", "2 to 2.0625 ounces", "3 to 3.0625 ounces", "4 to 4.0625 ounces", "Tennis balls must weigh between 2 and 2-1/16 ounces (56.70 - 58.47 gms)", "<img src=assets/images/ballWeight.jpg />"],
-["Which tennis player is/was nicknamed 'The Rocket'?", "Rod Laver", "Roy Emerson", "Novak Djokovic", "Rafael Nadal", "Rod Laver, who won two gram slams, was nicknamed 'The Rocket'", "<img src=assets/images/Laver.jpg />"]
+["Which tennis player is/was nicknamed 'The Rocket'?", "Rod Laver", "Roy Emerson", "Novak Djokovic", "Rafael Nadal", "Rod Laver, who won two gram slams, was nicknamed 'The Rocket'", "<img src=assets/images/Laver.jpg />"],
+["Which tennis player defeated Bobby Riggs in the 'Battle of the Sexes'?", "Martina Navratilova", "Chris Evert-Lloyd", "Serena Williams", "Billie Jean King", "Billie Jean King beat Bobby Riggs 6-4, 6-3, 6-3 after he claimed that 'no woman could beat a man in tennis.'", "<img src=assets/images/King.jpg />"],
+["What year was tennis originally an olympic sport?", "1896", "1924", "1968", "1988", "Tennis was originally an olympic sport in 1896; it was removed in 1924 and re-introduced in 1988.", "<img src=assets/images/olympics.jpg />"]
 ]
 
-var answerKey = [3,1,2,1]; //Answer key which gives correct answer indices in qAndA. For example, correct answers are qAndA[0][3], qAndA[1][1], qAndA[2][2], etc.
+var answerKey = [3,1,2,1,4,1]; //Answer key which gives correct answer indices in qAndA. For example, correct answers are qAndA[0][3], qAndA[1][1], qAndA[2][2], etc.
 var i; //Index of list in qAndA
 var j; //Index of selected answer within list in qAndA
 var k; //Index of correct answer within list in qAndA
@@ -14,7 +16,7 @@ var t; //Duration of countdown clock
 var cAnswers; //Number of correct answers
 var iAnswers; //Number of incorrect answers
 var timer; //Variable used to manage countdown timer
-var n = 3; //Index of last question in qAndA
+var n = 5; //Index of last question in qAndA
 
 // Provides countdown clock for t seconds
 function clock(){
@@ -37,7 +39,6 @@ function answer(){
 	$(".q").html("");
 	$(".a").html("");
 	$(".a").css({"border-width": "0px"});
-	console.log("j: " + j);
 	if (j===answerKey[i]) {
 		$(".outcome").html("Correct! Awesome!");
 		cAnswers++;		
@@ -98,7 +99,6 @@ function restart(){
 	iAnswers = 0;
 	playGame();	
 }
-
 
 //Start game
 $(".start").click(function(){
