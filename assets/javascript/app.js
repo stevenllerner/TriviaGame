@@ -14,8 +14,9 @@ var t; //Duration of countdown clock
 var cAnswers; //Number of correct answers
 var iAnswers; //Number of incorrect answers
 var timer; //Variable used to manage countdown timer
+var n = 3; //Index of last question in qAndA
 
-// Provides countdown clock for t seconds and changes each second
+// Provides countdown clock for t seconds
 function clock(){
 	t = 8;
 	$(".timeLeft").html("Time remaining for this question: " +t+ " seconds");
@@ -23,13 +24,12 @@ function clock(){
 		t = t - 1;
 		$(".timeLeft").html("Time remaining for this question: " +t+ " seconds");
 		if (t ===0){
-			console.log("The clock has timed out");
 			answer();
 		}
 	},1000);
 }
 
-//Removes timer and questions from view and gives correct answer
+//Removes timer and questions from view and gives correct answer for a few seconds. Then goes to next question. When last question is reached, gives overall scorecard.
 function answer(){
 	clearInterval(timer);
 	//Timer, question and answers are removed from view
@@ -41,38 +41,36 @@ function answer(){
 	if (j===answerKey[i]) {
 		$(".outcome").html("Correct! Awesome!");
 		cAnswers++;		
-		$(".outcomeE").html(qAndA[i][5]);
+		$(".outcomeE").html(qAndA[i][5] + "</br>");
 		$(".outcomeE").append(qAndA[i][6]);
-		console.log(qAndA[i][5]);
-		console.log(qAndA[i][6]);
-		console.log("i: " + i);
 	} else if (j===5) {
 		$(".outcome").html("Sorry, time up!");
 		iAnswers++;		
-		$(".outcomeE").html(qAndA[i][5]);
+		$(".outcomeE").html(qAndA[i][5] + "</br>");
 		$(".outcomeE").append(qAndA[i][6]);
 	} else {
 		$(".outcome").html("Sorry, answer is incorrect.");
 		iAnswers++;		
-		$(".outcomeE").html(qAndA[i][5]);
+		$(".outcomeE").html(qAndA[i][5] + "</br>");
 		$(".outcomeE").append(qAndA[i][6]);
-		console.log("else" +qAndA[i][5]);
-		console.log("else" +qAndA[i][6]);
-		console.log("elsei: " + i);
 	} 
-	if (i<=3){
+	if (i<=n){
 		setTimeout(function(){
 			$(".outcome").html("");
 			$(".outcomeE").html("");
-			i++;
-			playGame();
+			if (i === n){
+				scorecard();
+			}
+			if (i<n){
+				i++;
+				playGame();
+			}
 		},3000);
 	}
 }
 
 function playGame(){
 	clock();
-
 	//Questions and potential answers are displayed
 	$(".q").html(qAndA[i][0]);
 	$(".a1").html(qAndA[i][1]);
@@ -81,7 +79,36 @@ function playGame(){
 	$(".a4").html(qAndA[i][4]);
 	$(".a").css({"border-width": "3px"});
 	j=5;
-	//Specifies j value for selected answer
+}
+
+function scorecard(){
+	$(".sTitle").html("Thanks for playing! Here's how you did:");
+	$(".s1").html("Correct answers: " + cAnswers);
+	$(".s2").html("Incorrect answers: " + iAnswers);
+	$(".s3").html("Incorrect answers: " + (n+1-cAnswers-iAnswers));
+	$(".s4").html("Start Over");
+	$(".s4").css({"border-width": "3px"});		
+}
+
+function restart(){
+	$(".s").html("");
+	$(".s4").css({"border-width": "0px"});
+	i=0;
+	cAnswers = 0;
+	iAnswers = 0;
+	playGame();	
+}
+
+
+//Start game
+$(".start").click(function(){
+	// Removes start sign
+	$(".start").html("");
+	$(".start").css({"border-width": "0px"});
+	i=0;
+	cAnswers = 0;
+	iAnswers = 0;
+	//Specifies on-click functions for each answer tag
 	$(".a1").click(function(){
 		j=1;
 		answer();
@@ -98,16 +125,9 @@ function playGame(){
 		j=4;
 		answer();
 	})
-}
-
-//Start game
-$(".start").click(function(){
-	// Removes start sign
-	$(".start").html("");
-	$(".start").css({"border-width": "0px"});
-	i=0;
-	cAnswers = 0;
-	iAnswers = 0;
+	$(".s4").click(function(){
+		restart();
+	})
 	playGame();
 });
 

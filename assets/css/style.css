@@ -1,5 +1,4 @@
 
-
 body {
 	margin: 0px;
 	font-style: verdana, "times new roman";
@@ -17,6 +16,7 @@ h1 {
 	font-weight: bold;
 	color: green;
 	text-align: center;
+	margin-top: 3%;
 }
 
 .start {
@@ -24,13 +24,14 @@ h1 {
 	border-style: solid;
 	border-width: 3px;
 	border-color: green;
-	margin:10% 25% 10% 25%;
+	margin:5% 25% 5% 25%;
 }
 
 h2 {
 	font-size: 40px;
 	font-weight: bold;
 	text-align: center;
+	margin-bottom: 2%;
 }
 
 p {
@@ -38,9 +39,14 @@ p {
 	text-align: center;
 }
 
-.a {
+.a, .s4{
 	border-style: solid;
 	border-width: 0px;
 	border-color: green;
 	margin:2% 20% 2% 20%;
 }
+
+.sTitle {
+	font-weight: bold;
+}
+
