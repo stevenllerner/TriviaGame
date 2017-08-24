@@ -20,7 +20,7 @@ var n = 5; //Index of last question in qAndA
 
 // Provides countdown clock for t seconds
 function clock(){
-	t = 8;
+	t = 20;
 	$(".timeLeft").html("Time remaining for this question: " +t+ " seconds");
 	timer = setInterval(function(){
 		t = t - 1;
@@ -66,7 +66,7 @@ function answer(){
 				i++;
 				playGame();
 			}
-		},3000);
+		},5000);
 	}
 }
 
